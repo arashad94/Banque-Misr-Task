@@ -22,3 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "My Application"
 include(":app")
 include(":designsystem")
+include(":shared")
+include(":retrofitfactory")
