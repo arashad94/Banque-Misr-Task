@@ -1,0 +1,82 @@
+ext.excludedClasses = [
+        // data binding
+        'android.databinding.*.*',
+        '*.databinding.*Binding',
+        '*.android.databinding.*',
+        '*.androidx.databinding.*',
+        '*.BR',
+        // android
+        '*.R',
+        '*.R$*',
+        '*.BuildConfig',
+        '*.Manifest*',
+        'android.*.*.*',
+        // dagger
+        '*.*_MembersInjector',
+        '*.Dagger*Component',
+        '*.Dagger*Component$Builder',
+        '*.*Module_*Factory',
+        '*.di.module.*',
+        '*.*_Factory*',
+        '*.*Module*',
+        '*.*Dagger*',
+        '*.*Hilt*',
+        '*.*GeneratedInjector*',
+        '*.codegen.*',
+        // kotlin
+        '*.*MapperImpl*',
+        '*.*$ViewInjector*',
+        '*.*$ViewBinder*',
+        '*.*Component*',
+        '*.*BR*',
+        '*.*$Lambda$*',
+        '*.*Companion*',
+        '*.*MembersInjector*',
+        '*.*_Provide*Factory*',
+        '*.*Extensions*',
+        '*.*DrawerGraphDirections*',
+        // sealed and data classes
+        '*.*$Result',
+        '*.*$Result$*',
+        // GraphQL
+        '*.graphql.*',
+        // API
+        '*.data.api.*',
+        // DI
+        '*.di.*',
+        // Hmac
+        '*.gymshark.security.*',
+        // Moshi,
+        '*.*JsonAdapter',
+        // Root/Jailbreak
+        '*.root.*',
+        // View classes
+        '*.*Fragment',
+        '*.*Activity',
+        '*.*View',
+        '*.*Adapter',
+        '*.*Button',
+        '*.*Picker',
+        '*.*Dialog',
+        '*.*Toggles',
+        '*.*ViewHolder',
+        '*.presentation.view.*',
+        '*.presentation.navigation.*',
+        '*.NavigationController*',
+        '*.designsystem.*',
+        // deprecated classes that will be replaced (not worth testing)
+        '*.DefaultCachedObject*',
+        // data classes, temporary - https://github.com/Kotlin/kotlinx-kover/issues/686
+        '*.domain.model.*',
+        '*.data.model.*',
+]
+ext.excludedPackages = [
+        // app
+        'com.gymshark.store.app',
+        // Glide
+        'com.bumptech.glide',
+]
+
+ext.annotatedBy = [
+        "*Composable*"
+]

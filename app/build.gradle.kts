@@ -1,11 +1,23 @@
+import java.util.Properties
+
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
+    id("com.android.application")
+    id("kotlin-android")
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
 }
 
+val props = Properties()
+
 android {
+    signingConfigs {
+        create("releasePlaystore") {
+            storeFile = rootProject.file("secrets/release_playstore")
+            storePassword = props.getProperty("STORE_PASSWORD")
+            keyAlias = props.getProperty("KEY_ALIAS")
+            keyPassword = props.getProperty("KEY_PASSWORD")
+        }
+    }
     namespace = "com.banquemisr.challenge05"
     compileSdk = 34
 
@@ -19,33 +31,59 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
+
     buildTypes {
-        release {
+        create("staging") {
+            isDebuggable = true
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            signingConfig = signingConfigs.getByName("debug")
+            applicationIdSuffix = ".staging"
+            matchingFallbacks.add("debug")
+        }
+        create("production") {
+            signingConfig = signingConfigs.getByName("releasePlaystore")
+            isDebuggable = false
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            matchingFallbacks.add("release")
         }
     }
+
+    androidComponents {
+        beforeVariants { variantBuilder ->
+            if (variantBuilder.name == "release" || variantBuilder.name == "debug") {
+                variantBuilder.enable = false
+            }
+        }
+    }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
-    }
-    buildFeatures {
-        compose = true
+        jvmTarget = JavaVersion.VERSION_17.toString()
+        freeCompilerArgs = listOf(
+            "-Xinline-classes",
+            "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+            "-Xopt-in=kotlinx.coroutines.FlowPreview"
+        )
     }
 }
 
 dependencies {
 
     implementation(project(":retrofitfactory"))
+    implementation(project(":designsystem"))
+    implementation(project(":shared"))
+
     ksp(libs.hilt.android.compiler)
     ksp(libs.moshi.codegen)
-    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.core)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
@@ -61,11 +99,4 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.logging.interceptor)
     implementation(libs.retrofit.converter.moshi)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
 }

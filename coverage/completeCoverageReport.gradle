@@ -1,0 +1,25 @@
+apply plugin: 'org.jetbrains.kotlinx.kover'
+apply from: 'coverage/coverageExclusions.gradle'
+
+kover {
+    reports {
+        filters {
+            excludes {
+                classes(excludedClasses)
+                packages(excludedPackages)
+                // Parcelables - https://github.com/Kotlin/kotlinx-kover/issues/686
+                annotatedBy("*Composable*", "*Parcelize*")
+            }
+        }
+    }
+    currentProject {
+        createVariant("customDebug") {}
+        createVariant("customRelease") {}
+    }
+}
+
+dependencies {
+    kover(project(':designsystem'))
+    kover(project(':shared'))
+    kover(project(':retrofitfactory'))
+}
