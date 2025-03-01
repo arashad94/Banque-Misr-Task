@@ -1,7 +1,9 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    id("com.android.library")
+    id("kotlin-android")
 }
+
+apply(from = "../coverage/coverageReport.gradle")
 
 android {
     namespace = "com.banquemisr.shared"
@@ -14,26 +16,19 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
-    }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.core)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    implementation(libs.google.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     testImplementation(libs.mockito.kotlin)

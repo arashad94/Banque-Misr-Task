@@ -1,8 +1,10 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.compose.compiler)
 }
+
+apply(from = "../coverage/coverageReport.gradle")
 
 android {
     namespace = "com.banquemisr.designsystem"
@@ -12,18 +14,8 @@ android {
         minSdk = 24
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
     buildFeatures {
         compose = true
     }
@@ -31,24 +23,33 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.kotlin.compiler.extension.version.get()
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = JavaVersion.VERSION_17.toString()
+        freeCompilerArgs += listOf(
+            "-Xinline-classes",
+            "-Xopt-in=androidx.compose.foundation.ExperimentalFoundationApi",
+            "-Xopt-in=androidx.compose.material.ExperimentalMaterialApi"
+        )
     }
 }
 
 dependencies {
-
     implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.compose.material)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.material3)
+    // Android Studio Preview support
     implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.core)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.google.material)
+    implementation(libs.androidx.compose.material)
+    implementation(libs.compose.coil)
+    // Android Studio Preview support
+    debugImplementation(libs.androidx.ui.tooling)
 }
