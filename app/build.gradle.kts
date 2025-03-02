@@ -99,4 +99,5 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.logging.interceptor)
     implementation(libs.retrofit.converter.moshi)
+    "stagingImplementation"(libs.chucker)
 }
