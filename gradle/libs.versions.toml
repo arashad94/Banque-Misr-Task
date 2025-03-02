@@ -22,10 +22,14 @@ mockito = "5.4.0"
 coil = "2.7.0"
 androidx_core = "1.13.1"
 chucker = "4.0.0"
+agpVersion = "8.7.3"
+kotlinx = "1.10.1"
+netmock = "0.5.0"
 
 [libraries]
 androidx-core = { group = "androidx.core", name = "core-ktx", version.ref = "androidx_core" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
@@ -39,6 +43,8 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-compose-material = { group = "androidx.compose.material", name = "material", version.ref = "compose_material" }
 hilt-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockito" }
+kotlin-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx" }
+netmock = { module = "io.github.denisbronx.netmock:netmock-server", version.ref = "netmock" }
 
 # chucker
 chucker = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }
@@ -69,3 +75,5 @@ android-gradle = { module = "com.android.tools.build:gradle", version.ref = "agp
 [plugins]
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp"}
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agpVersion" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

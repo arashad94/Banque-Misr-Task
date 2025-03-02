@@ -16,11 +16,13 @@ kotlin {
 }
 
 dependencies {
+    implementation(project(":retrofitfactory"))
+
     ksp(libs.moshi.codegen)
     implementation(libs.moshi)
     implementation(libs.moshi.kotlin)
     implementation(libs.moshi.adapters)
-
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.moshi)
+    api(libs.netmock)
 }
