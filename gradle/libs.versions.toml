@@ -21,6 +21,7 @@ kover = "0.8.3"
 mockito = "5.4.0"
 coil = "2.7.0"
 androidx_core = "1.13.1"
+chucker = "4.0.0"
 
 [libraries]
 androidx-core = { group = "androidx.core", name = "core-ktx", version.ref = "androidx_core" }
@@ -39,6 +40,8 @@ androidx-compose-material = { group = "androidx.compose.material", name = "mater
 hilt-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockito" }
 
+# chucker
+chucker = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }
 
 # retrofit
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
