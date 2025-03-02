@@ -1,6 +1,7 @@
 package com.banquemisr.challenge05.di
 
 import android.content.Context
+import com.banquemisr.challenge05.BuildConfig.BASE_URL
 import com.banquemisr.retrofitfactory.RetrofitFactory
 import com.chuckerteam.chucker.api.*
 import com.squareup.moshi.Moshi
@@ -34,7 +35,7 @@ object ApiModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return RetrofitFactory.createRetrofit(okHttpClient, "")
+        return RetrofitFactory.createRetrofit(okHttpClient, BASE_URL)
     }
 
     @Provides

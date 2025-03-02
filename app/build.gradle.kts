@@ -43,6 +43,8 @@ android {
             signingConfig = signingConfigs.getByName("debug")
             applicationIdSuffix = ".staging"
             matchingFallbacks.add("debug")
+
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
         }
         create("production") {
             signingConfig = signingConfigs.getByName("releasePlaystore")
