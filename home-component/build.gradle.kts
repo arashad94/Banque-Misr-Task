@@ -34,6 +34,7 @@ dependencies {
     implementation(project(":retrofitfactory"))
     implementation(project(":network-utils"))
     implementation(project(":shared"))
+    implementation(project(":bmcache"))
 
     implementation(libs.kotlin.coroutines.core)
     ksp(libs.hilt.android.compiler)
