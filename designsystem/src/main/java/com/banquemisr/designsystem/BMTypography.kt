@@ -13,6 +13,11 @@ object BMTypography {
     val HeadingM = TextStyle(
         fontSize = 14.sp,
         lineHeight = 14.sp,
-        fontWeight = FontWeight(700)
+        fontWeight = FontWeight(400)
+    )
+    val HeadingS = TextStyle(
+        fontSize = 10.sp,
+        lineHeight = 10.sp,
+        fontWeight = FontWeight(400)
     )
 }

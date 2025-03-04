@@ -1,6 +1,5 @@
 package com.banquemisr.designsystem
 
-import BMTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -20,6 +19,16 @@ object BMText {
 
     @Composable
     fun HeadingM(textModifier: BMTextModifier = BMTextModifier(), text: String) {
+        BasicText(
+            text = text,
+            bmTextModifier = textModifier,
+            style = BMTypography.HeadingM,
+            defaultColor = BMTheme.colors.textSecondary
+        )
+    }
+
+    @Composable
+    fun HeadingS(textModifier: BMTextModifier = BMTextModifier(), text: String) {
         BasicText(
             text = text,
             bmTextModifier = textModifier,

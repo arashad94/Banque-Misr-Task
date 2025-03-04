@@ -1,4 +1,4 @@
-package com.banquemisr.homeui.presentation.view
+package com.banquemisr.pdpui.presentation.view
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -7,7 +7,7 @@ import com.banquemisr.designsystem.BMText.HeadingL
 import com.banquemisr.designsystem.BMTextModifier
 
 @Composable
-internal fun ErrorScreen() {
+internal fun PdpErrorScreen() {
     Box(modifier = Modifier.fillMaxSize()) {
         HeadingL(
             textModifier = BMTextModifier(

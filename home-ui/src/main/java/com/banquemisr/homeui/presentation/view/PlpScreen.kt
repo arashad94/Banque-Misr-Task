@@ -1,6 +1,6 @@
 package com.banquemisr.homeui.presentation.view
 
-import BMTheme
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.runtime.Composable
@@ -13,21 +13,24 @@ import com.banquemisr.designsystem.BMText.HeadingM
 import com.banquemisr.homecomponent.domain.model.Movie
 
 @Composable
-internal fun PlpScreen(movies: List<Movie>) {
+internal fun PlpScreen(movies: List<Movie>, onMovieClicked: (String) -> Unit) {
     LazyRow(modifier = Modifier.fillMaxSize()) {
-        items(movies) { MovieItem(it) }
+        items(movies) { MovieItem(it, onMovieClicked) }
     }
 }
 
 @Composable
-fun MovieItem(movie: Movie) {
+fun MovieItem(movie: Movie, onMovieClicked: (String) -> Unit) {
     Column(
         modifier = Modifier
             .width(180.dp)
-            .padding(8.dp)
+            .padding(BMSpacing.nano)
+            .clickable { onMovieClicked(movie.id.toString()) }
     ) {
         BMImage(
-            modifier = Modifier.width(160.dp).heightIn(min = 200.dp),
+            modifier = Modifier
+                .width(160.dp)
+                .heightIn(min = 200.dp),
             imageUrl = movie.posterPath
         ) // For some reason loading the images from their side is not working
         MovieTitle(movie.title)

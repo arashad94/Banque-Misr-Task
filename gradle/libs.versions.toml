@@ -26,6 +26,7 @@ agpVersion = "8.7.3"
 kotlinx = "1.10.1"
 netmock = "0.5.0"
 landscapist = "2.4.1"
+compose_constraint_layout = "1.1.1"
 
 [libraries]
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
@@ -41,6 +42,7 @@ androidx-lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-v
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "compose_navigation" }
+compose-constraintlayout = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "compose_constraint_layout" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }

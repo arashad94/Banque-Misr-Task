@@ -18,7 +18,7 @@ class HomeViewModelTest {
     private val fetchMoviesByType: FetchMoviesByType = mock()
     private val stateDelegate: StateDelegate<HomeViewModel.State> = StateDelegate()
     private lateinit var sut: HomeViewModel
-    private lateinit var observer: TestObserver<HomeViewModel.State>
+    private lateinit var testObserver: TestObserver<HomeViewModel.State>
 
     private val testDispatcher = UnconfinedTestDispatcher()
 
@@ -26,7 +26,7 @@ class HomeViewModelTest {
     fun setUp() {
         Dispatchers.setMain(testDispatcher)
         sut = HomeViewModel(fetchMoviesByType, stateDelegate)
-        observer = sut.state.test()
+        testObserver = sut.state.test()
     }
 
     @After
@@ -42,13 +42,26 @@ class HomeViewModelTest {
     }
 
     @Test
+    fun `EXPECT fetchMovies is called WHEN onResume is called`() = runTest {
+        whenever(fetchMoviesByType.invoke("now_playing")).thenReturn(BMResult.Success(MOVIES_TYPE))
+
+        sut.onResume(mock())
+
+        testObserver.assertValueHistory(
+            HomeViewModel.State.Idle,
+            HomeViewModel.State.Content(TABS_LIST, 0, HomeViewModel.DisplayState.Loading),
+            HomeViewModel.State.Content(TABS_LIST, 0, HomeViewModel.DisplayState.ContentState(MOVIES)),
+        )
+    }
+
+    @Test
     fun `EXPECT state is Content with movies WHEN fetchMovies is called and API succeeds`() = runTest {
         whenever(fetchMoviesByType(NOW_PLAYING)).thenReturn(BMResult.Success(MOVIES_TYPE))
 
         sut.fetchMovies(type = NOW_PLAYING)
         advanceUntilIdle()
 
-        observer.assertValueHistory(
+        testObserver.assertValueHistory(
             HomeViewModel.State.Idle,
             HomeViewModel.State.Content(
                 tabsList = TABS_LIST,
@@ -69,7 +82,7 @@ class HomeViewModelTest {
 
         sut.fetchMovies(type = NOW_PLAYING)
 
-        observer.assertValueHistory(
+        testObserver.assertValueHistory(
             HomeViewModel.State.Idle,
             HomeViewModel.State.Content(
                 tabsList = TABS_LIST,
@@ -92,7 +105,7 @@ class HomeViewModelTest {
         sut.fetchMovies(type = NOW_PLAYING)
         sut.onTabSelected(1)
 
-        observer.assertValueHistory(
+        testObserver.assertValueHistory(
             HomeViewModel.State.Idle,
             HomeViewModel.State.Content(
                 tabsList = TABS_LIST,
@@ -129,7 +142,7 @@ class HomeViewModelTest {
         sut.fetchMovies(type = NOW_PLAYING) // Fetch movies for the first tab
         sut.onTabSelected(0) // Select the same tab again
 
-        observer.assertValueHistory(
+        testObserver.assertValueHistory(
             HomeViewModel.State.Idle,
             HomeViewModel.State.Content(
                 tabsList = TABS_LIST,
