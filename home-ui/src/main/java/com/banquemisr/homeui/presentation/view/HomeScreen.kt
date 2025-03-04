@@ -13,9 +13,8 @@ import com.banquemisr.homeui.presentation.viewmodel.HomeViewModel
 fun HomeScreen(navController: NavController) {
     val viewModel: HomeViewModel = hiltViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
-    val onTabSelected: (Int) -> Unit = {
-        viewModel.onTabSelected(it)
-    }
+    val onTabSelected: (Int) -> Unit = { viewModel.onTabSelected(it) }
+    val onMovieClicked: (String) -> Unit = { navController.navigate("pdp/$it") }
 
     viewModel.fetchMovies()
 
@@ -25,7 +24,7 @@ fun HomeScreen(navController: NavController) {
                 HomeViewModel.State.Idle -> {}
                 is HomeViewModel.State.Content -> {
                     val content = state as HomeViewModel.State.Content
-                    ScreenContent(content, onTabSelected)
+                    ScreenContent(content, onTabSelected, onMovieClicked)
                 }
             }
         }
@@ -33,7 +32,11 @@ fun HomeScreen(navController: NavController) {
 }
 
 @Composable
-internal fun ScreenContent(content: HomeViewModel.State.Content, onTabSelected: (Int) -> Unit) {
+internal fun ScreenContent(
+    content: HomeViewModel.State.Content,
+    onTabSelected: (Int) -> Unit,
+    onMovieClicked: (String) -> Unit
+) {
     val selectedTabIndex by remember(content.index) { mutableIntStateOf(content.index) }
     TabRow(selectedTabIndex = selectedTabIndex) {
         content.tabsList.forEachIndexed { index, tab ->
@@ -55,7 +58,7 @@ internal fun ScreenContent(content: HomeViewModel.State.Content, onTabSelected: 
 
         is HomeViewModel.DisplayState.ContentState -> {
             val movies = content.displayState.movies
-            PlpScreen(movies)
+            PlpScreen(movies, onMovieClicked)
         }
     }
 }

@@ -85,6 +85,8 @@ dependencies {
     implementation(project(":shared"))
     implementation(project(":home-component"))
     implementation(project(":home-ui"))
+    implementation(project(":pdp-ui"))
+    implementation(project(":pdp-component"))
 
     ksp(libs.hilt.android.compiler)
     ksp(libs.moshi.codegen)

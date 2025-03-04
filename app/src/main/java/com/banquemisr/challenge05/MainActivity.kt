@@ -4,6 +4,7 @@ import BMTheme
 import android.os.Bundle
 import androidx.activity.*
 import androidx.activity.compose.setContent
+import com.banquemisr.challenge05.navigation.RootNavigation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -13,7 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BMTheme(isDarkTheme = false) {
-                BMComposeApp()
+                RootNavigation()
             }
         }
     }
