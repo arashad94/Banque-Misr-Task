@@ -5,6 +5,8 @@ import com.banquemisr.homecomponent.data.mapper.*
 import com.banquemisr.homecomponent.data.mapper.MoviesByTypeMapper
 import com.banquemisr.homecomponent.data.repository.DefaultMovieTypesRepository
 import com.banquemisr.homecomponent.domain.repository.MovieTypesRepository
+import com.banquemisr.homecomponent.domain.usecase.*
+import com.banquemisr.homecomponent.domain.usecase.DefaultFetchMoviesByTypeUseCase
 import dagger.*
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
@@ -29,4 +31,10 @@ internal object HomeModule {
     fun provideMovieTypesRepository(
         repository: DefaultMovieTypesRepository
     ): MovieTypesRepository = repository
+
+    @Singleton
+    @Provides
+    fun provideFetchMoviesByTypeUseCase(
+        useCase: DefaultFetchMoviesByTypeUseCase
+    ): FetchMoviesByTypeUseCase = useCase
 }

@@ -1,18 +1,20 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    alias(libs.plugins.ksp)
     id("dagger.hilt.android.plugin")
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.ksp)
 }
 
 apply(from = "../coverage/coverageReport.gradle")
 
 android {
-    namespace = "com.banquemisr.home_component"
+    namespace = "com.banquemisr.homeui"
     compileSdk = 34
 
     defaultConfig {
         minSdk = 24
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -31,19 +33,26 @@ android {
 }
 
 dependencies {
-    implementation(project(":retrofitfactory"))
-    implementation(project(":network-utils"))
+    implementation(project(":home-component"))
+    implementation(project(":viewmodel"))
+    implementation(project(":designsystem"))
     implementation(project(":shared"))
+    implementation(project(":bmflows"))
 
-    implementation(libs.kotlin.coroutines.core)
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
-    ksp(libs.moshi.codegen)
-    implementation(libs.moshi)
-    implementation(libs.moshi.adapters)
-    implementation(libs.retrofit)
+    implementation(libs.hilt.android.navigation)
+    implementation(libs.hilt.android.navigation.compose)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.lifecycle.compose)
+
+    implementation(libs.androidx.core)
     testImplementation(libs.mockito.kotlin)
-    testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
-    androidTestImplementation(libs.androidx.junit)
+    testImplementation(libs.junit)
 }

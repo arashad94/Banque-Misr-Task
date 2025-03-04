@@ -49,7 +49,8 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.google.material)
     implementation(libs.androidx.compose.material)
-    implementation(libs.compose.coil)
+    implementation(libs.landscapist.bom)
+    implementation(libs.landscapist.coil)
     // Android Studio Preview support
     debugImplementation(libs.androidx.ui.tooling)
 }

@@ -1,10 +1,10 @@
 package com.banquemisr.homecomponent.domain.model
 
-internal data class MoviesType(
+data class MoviesType(
     val results: List<Movie>
 )
 
-internal data class Movie(
+data class Movie(
     val adult: Boolean,
     val id: Long,
     val title: String,

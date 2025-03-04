@@ -23,4 +23,5 @@ dependencies {
     kover(project(':shared'))
     kover(project(':retrofitfactory'))
     kover(project(':home-component'))
+    kover(project(':home-ui'))
 }
