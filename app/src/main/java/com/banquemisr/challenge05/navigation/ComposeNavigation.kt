@@ -6,7 +6,7 @@ import com.banquemisr.homeui.navigation.homeNavigation
 import com.banquemisr.pdpui.presentation.navigation.pdpNavigation
 
 @Composable
-fun RootNavigation() {
+fun ComposeNavigation() {
     val navController = rememberNavController()
     val appNavigator = AppNavigator(navController)
     NavHost(navController = navController, startDestination = "home") {
