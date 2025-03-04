@@ -12,8 +12,8 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.*
 import com.banquemisr.designsystem.BMText.HeadingL
 
-private val ICON_SIZE = 24.dp
-private val ICON_PADDING = 16.dp
+private val ICON_SIZE = BMSpacing.xsm
+private val ICON_PADDING = BMSpacing.xxsm
 private val END_MARGIN = ICON_PADDING + ICON_SIZE
 
 @Composable
@@ -25,7 +25,7 @@ fun HeaderBar(
     ConstraintLayout(
         constraintSet = decoupleConstraints(),
         modifier = modifier
-            .padding(top = 16.dp)
+            .padding(top = BMSpacing.xxsm)
             .fillMaxWidth()
             .height(56.dp)
     ) {
@@ -34,8 +34,8 @@ fun HeaderBar(
             colorFilter = ColorFilter.tint(ColorPalette.black),
             contentDescription = "",
             modifier = Modifier
-                .padding(16.dp)
-                .size(24.dp)
+                .padding(BMSpacing.xxsm)
+                .size(BMSpacing.xsm)
                 .clickable { onBackClicked() }
         )
         HeadingL(

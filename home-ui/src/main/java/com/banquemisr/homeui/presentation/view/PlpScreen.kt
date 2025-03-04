@@ -24,7 +24,7 @@ fun MovieItem(movie: Movie, onMovieClicked: (String) -> Unit) {
     Column(
         modifier = Modifier
             .width(180.dp)
-            .padding(8.dp)
+            .padding(BMSpacing.nano)
             .clickable { onMovieClicked(movie.id.toString()) }
     ) {
         BMImage(

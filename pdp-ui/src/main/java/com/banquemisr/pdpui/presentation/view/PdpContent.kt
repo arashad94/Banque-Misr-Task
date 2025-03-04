@@ -7,7 +7,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.*
 import androidx.constraintlayout.compose.*
 import androidx.constraintlayout.compose.layoutId
 import com.banquemisr.designsystem.*
@@ -21,7 +20,7 @@ internal fun PdpContent(movie: MovieDetails) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(bottom = 8.dp, start = 8.dp, end = 8.dp)
+            .padding(bottom = BMSpacing.nano, start = BMSpacing.nano, end = BMSpacing.nano)
             .verticalScroll(rememberScrollState()),
     ) {
         ConstraintLayout(
@@ -34,26 +33,26 @@ internal fun PdpContent(movie: MovieDetails) {
 
         Spacer(modifier = Modifier
             .fillMaxWidth()
-            .height(8.dp))
+            .height(BMSpacing.nano))
         MovieTitle(movie.title)
-        Spacer(modifier = Modifier.fillMaxWidth().height(8.dp))
+        Spacer(modifier = Modifier.fillMaxWidth().height(BMSpacing.nano))
         MovieOverview(movie.overview)
-        Spacer(modifier = Modifier.fillMaxWidth().height(8.dp))
+        Spacer(modifier = Modifier.fillMaxWidth().height(BMSpacing.nano))
         MovieGenres(movie.genres)
     }
 }
 
 @Composable
 fun MovieTag(tag: String) {
-    Box(modifier = Modifier.padding(8.dp).layoutId("tag")) {
+    Box(modifier = Modifier.padding(BMSpacing.nano).layoutId("tag")) {
         Text(
             text = tag.uppercase(),
             maxLines = 1,
             color = BMTheme.colors.textPrimary,
             modifier = Modifier
                 .wrapContentWidth()
-                .background(ColorPalette.grey300, shape = RoundedCornerShape(4.dp))
-                .padding(horizontal = 8.dp, vertical = 6.dp)
+                .background(ColorPalette.grey300, shape = RoundedCornerShape(BMSpacing.quark))
+                .padding(horizontal = BMSpacing.nano, vertical = BMSpacing.nano)
         )
     }
 }
@@ -78,13 +77,13 @@ fun MovieOverview(overview: String) {
 
 @Composable
 fun MovieGenres(genres: List<String>) {
-    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+    LazyRow(horizontalArrangement = Arrangement.spacedBy(BMSpacing.nano)) {
         items(genres) {
             Box(
                 modifier = Modifier
                     .wrapContentSize()
-                    .background(ColorPalette.grey300, shape = RoundedCornerShape(4.dp))
-                    .padding(8.dp)
+                    .background(ColorPalette.grey300, shape = RoundedCornerShape(BMSpacing.quark))
+                    .padding(BMSpacing.nano)
             ) { HeadingS(text = it) }
         }
     }

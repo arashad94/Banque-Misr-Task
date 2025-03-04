@@ -4,14 +4,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.banquemisr.designsystem.shimmerBackground
+import com.banquemisr.designsystem.*
 
 @Composable
 internal fun PdpLoading() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(8.dp)
+            .padding(BMSpacing.nano)
     ) {
         Box(
             modifier = Modifier
@@ -21,15 +21,15 @@ internal fun PdpLoading() {
         )
         Box(
             modifier = Modifier
-                .padding(top = 16.dp, bottom = 8.dp)
+                .padding(top = BMSpacing.xxsm, bottom = BMSpacing.nano)
                 .width(160.dp)
-                .height(32.dp)
-                .padding(vertical = 4.dp)
+                .height(BMSpacing.sm)
+                .padding(vertical = BMSpacing.quark)
                 .shimmerBackground()
         )
         Box(
             modifier = Modifier
-                .padding(vertical = 8.dp)
+                .padding(vertical = BMSpacing.nano)
                 .fillMaxWidth()
                 .height(50.dp)
                 .shimmerBackground()
