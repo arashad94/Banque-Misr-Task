@@ -5,7 +5,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.compose.*
+import com.banquemisr.designsystem.lifecycle.ObserveLifecycleEvents
 import com.banquemisr.homeui.navigation.HomeNavigator
 import com.banquemisr.homeui.presentation.viewmodel.HomeViewModel
 
@@ -18,7 +19,7 @@ fun HomeScreen(navController: HomeNavigator) {
         navController.navigateToPdp(it)
     }
 
-    viewModel.fetchMovies()
+    viewModel.ObserveLifecycleEvents(LocalLifecycleOwner.current.lifecycle)
 
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {

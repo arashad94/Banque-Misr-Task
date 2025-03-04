@@ -1,6 +1,6 @@
 package com.banquemisr.challenge05
 
-import BMTheme
+import com.banquemisr.designsystem.BMTheme
 import android.os.Bundle
 import androidx.activity.*
 import androidx.activity.compose.setContent

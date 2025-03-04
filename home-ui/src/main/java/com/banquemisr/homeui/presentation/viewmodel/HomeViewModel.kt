@@ -3,19 +3,28 @@ package com.banquemisr.homeui.presentation.viewmodel
 import androidx.lifecycle.*
 import com.banquemisr.homecomponent.domain.model.Movie
 import com.banquemisr.homecomponent.domain.usecase.FetchMoviesByType
-import com.banquemisr.homeui.data.*
+import com.banquemisr.homeui.data.TabInfo
 import com.banquemisr.homeui.presentation.viewmodel.HomeViewModel.DisplayState.*
 import com.banquemisr.viewmodel.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.*
+import kotlinx.coroutines.launch
+
 @HiltViewModel
 internal class HomeViewModel @Inject constructor(
     private val fetchMoviesByType: FetchMoviesByType,
     private val stateDelegate: StateDelegate<State> = StateDelegate()
-) : ViewModel(), StateViewModel<HomeViewModel.State> by stateDelegate {
+) : ViewModel(),
+    DefaultLifecycleObserver,
+    StateViewModel<HomeViewModel.State> by stateDelegate {
+
     init {
         stateDelegate.setDefaultState(State.Idle)
+    }
+
+    override fun onResume(owner: LifecycleOwner) {
+        super.onResume(owner)
+        fetchMovies()
     }
 
     fun fetchMovies(index: Int = 0, type: String = "now_playing") {
@@ -46,7 +55,8 @@ internal class HomeViewModel @Inject constructor(
     sealed interface State {
         data object Idle : State
         data class Content(
-            val tabsList: List<TabInfo> = listOf( // This should be also coming from an API but out of scope
+            val tabsList: List<TabInfo> = listOf(
+                // This should be also coming from an API but out of scope
                 TabInfo("Now Playing", "now_playing"),
                 TabInfo("Popular", "popular"),
                 TabInfo("Upcoming", "upcoming"),

@@ -1,6 +1,5 @@
 package com.banquemisr.homeui.presentation.view
 
-import BMTheme
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
@@ -29,7 +28,9 @@ fun MovieItem(movie: Movie, onMovieClicked: (String) -> Unit) {
             .clickable { onMovieClicked(movie.id.toString()) }
     ) {
         BMImage(
-            modifier = Modifier.width(160.dp).heightIn(min = 200.dp),
+            modifier = Modifier
+                .width(160.dp)
+                .heightIn(min = 200.dp),
             imageUrl = movie.posterPath
         ) // For some reason loading the images from their side is not working
         MovieTitle(movie.title)
