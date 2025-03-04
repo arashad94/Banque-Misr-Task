@@ -6,15 +6,17 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavController
+import com.banquemisr.homeui.navigation.HomeNavigator
 import com.banquemisr.homeui.presentation.viewmodel.HomeViewModel
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(navController: HomeNavigator) {
     val viewModel: HomeViewModel = hiltViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
     val onTabSelected: (Int) -> Unit = { viewModel.onTabSelected(it) }
-    val onMovieClicked: (String) -> Unit = { navController.navigate("pdp/$it") }
+    val onMovieClicked: (String) -> Unit = {
+        navController.navigateToPdp(it)
+    }
 
     viewModel.fetchMovies()
 
