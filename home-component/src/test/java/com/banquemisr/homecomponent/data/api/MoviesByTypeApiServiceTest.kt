@@ -44,7 +44,7 @@ class MoviesByTypeApiServiceTest {
         const val MOVIES_TYPE = "now_playing"
         const val AUTHORIZATION_HEADER = "Authorization"
         const val TOKEN =
-            "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MzlhYTRkNDkxNzNlZTE0YzNmYTAzOTExMmNhNjFlNSIsIm5iZiI6MTc0MDg3OTE3OC40ODgsInN1YiI6IjY3YzNiNTRhODlhZmZmOWUzMjRlMGFjYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xA-hlcxzhrmjDH-Tm195gutA0-n3IE6dmxgA3aB5s9I"
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MzlhYTRkNDkxNzNlZTE0YzNmYTAzOTExMmNhNjFlNSIsIm5iZiI6MTc0MDg3OTE3OC40ODgsInN1YiI6IjY3YzNiNTRhODlhZmZmOWUzMjRlMGFjYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xA-hlcxzhrmjDH-Tm195gutA0-n3IE6dmxgA3aB5s9I"
         val EXPECTED_REQUEST = NetMockRequest(
             method = Method.Get,
             requestUrl = "${URL}movie/$MOVIES_TYPE",

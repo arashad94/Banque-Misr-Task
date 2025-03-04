@@ -1,9 +1,8 @@
-package com.banquemisr.homecomponent.data
+package com.banquemisr.homecomponent.data.repository
 
 import com.banquemisr.homecomponent.data.api.MoviesByTypeApiService
 import com.banquemisr.homecomponent.data.mapper.MoviesByTypeMapper
 import com.banquemisr.homecomponent.data.model.MoviesTypeDto
-import com.banquemisr.homecomponent.data.repository.DefaultMovieTypesRepository
 import com.banquemisr.homecomponent.domain.model.MoviesType
 import com.banquemisr.shared.BMResult
 import kotlinx.coroutines.test.runTest

@@ -2,7 +2,7 @@ package com.banquemisr.homeui
 
 import com.banquemisr.bmflows.*
 import com.banquemisr.homecomponent.domain.model.*
-import com.banquemisr.homecomponent.domain.usecase.FetchMoviesByTypeUseCase
+import com.banquemisr.homecomponent.domain.usecase.FetchMoviesByType
 import com.banquemisr.homeui.data.TabInfo
 import com.banquemisr.homeui.presentation.viewmodel.HomeViewModel
 import com.banquemisr.shared.BMResult
@@ -15,7 +15,7 @@ import org.mockito.kotlin.*
 
 class HomeViewModelTest {
 
-    private val fetchMoviesByTypeUseCase: FetchMoviesByTypeUseCase = mock()
+    private val fetchMoviesByType: FetchMoviesByType = mock()
     private val stateDelegate: StateDelegate<HomeViewModel.State> = StateDelegate()
     private lateinit var sut: HomeViewModel
     private lateinit var observer: TestObserver<HomeViewModel.State>
@@ -25,7 +25,7 @@ class HomeViewModelTest {
     @Before
     fun setUp() {
         Dispatchers.setMain(testDispatcher)
-        sut = HomeViewModel(fetchMoviesByTypeUseCase, stateDelegate)
+        sut = HomeViewModel(fetchMoviesByType, stateDelegate)
         observer = sut.state.test()
     }
 
@@ -43,7 +43,7 @@ class HomeViewModelTest {
 
     @Test
     fun `EXPECT state is Content with movies WHEN fetchMovies is called and API succeeds`() = runTest {
-        whenever(fetchMoviesByTypeUseCase(NOW_PLAYING)).thenReturn(BMResult.Success(MOVIES_TYPE))
+        whenever(fetchMoviesByType(NOW_PLAYING)).thenReturn(BMResult.Success(MOVIES_TYPE))
 
         sut.fetchMovies(type = NOW_PLAYING)
         advanceUntilIdle()
@@ -65,7 +65,7 @@ class HomeViewModelTest {
 
     @Test
     fun `EXPECT state is Content with Error WHEN fetchMovies is called and API fails`() = runTest {
-        whenever(fetchMoviesByTypeUseCase.invoke(NOW_PLAYING)).thenReturn(BMResult.Error(Unit))
+        whenever(fetchMoviesByType.invoke(NOW_PLAYING)).thenReturn(BMResult.Error(Unit))
 
         sut.fetchMovies(type = NOW_PLAYING)
 
@@ -86,8 +86,8 @@ class HomeViewModelTest {
 
     @Test
     fun `EXPECT state updates with new tab index and movies WHEN onTabSelected is called`() = runTest {
-        whenever(fetchMoviesByTypeUseCase.invoke(NOW_PLAYING)).thenReturn(BMResult.Success(MOVIES_TYPE))
-        whenever(fetchMoviesByTypeUseCase.invoke(POPULAR)).thenReturn(BMResult.Success(MOVIES_TYPE))
+        whenever(fetchMoviesByType.invoke(NOW_PLAYING)).thenReturn(BMResult.Success(MOVIES_TYPE))
+        whenever(fetchMoviesByType.invoke(POPULAR)).thenReturn(BMResult.Success(MOVIES_TYPE))
 
         sut.fetchMovies(type = NOW_PLAYING)
         sut.onTabSelected(1)
@@ -124,7 +124,7 @@ class HomeViewModelTest {
 
     @Test
     fun `EXPECT no state change WHEN onTabSelected is called with the same tab`() = runTest {
-        whenever(fetchMoviesByTypeUseCase.invoke(NOW_PLAYING)).thenReturn(BMResult.Success(MOVIES_TYPE))
+        whenever(fetchMoviesByType.invoke(NOW_PLAYING)).thenReturn(BMResult.Success(MOVIES_TYPE))
 
         sut.fetchMovies(type = NOW_PLAYING) // Fetch movies for the first tab
         sut.onTabSelected(0) // Select the same tab again
