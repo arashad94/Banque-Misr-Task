@@ -43,6 +43,7 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.hilt.android.navigation)
     implementation(libs.hilt.android.navigation.compose)
+    implementation(libs.compose.constraintlayout)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)

@@ -1,10 +1,10 @@
 package com.banquemisr.challenge05
 
-import com.banquemisr.designsystem.BMTheme
 import android.os.Bundle
 import androidx.activity.*
 import androidx.activity.compose.setContent
 import com.banquemisr.challenge05.navigation.ComposeNavigation
+import com.banquemisr.designsystem.BMTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

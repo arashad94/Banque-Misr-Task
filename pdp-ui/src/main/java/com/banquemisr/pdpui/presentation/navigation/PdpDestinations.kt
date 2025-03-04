@@ -26,4 +26,5 @@ fun NavGraphBuilder.pdpNavigation(navigator: PdpNavigator) {
 
 interface PdpNavigator {
     fun navigateToPdp(id: String)
+    fun navigateUp()
 }

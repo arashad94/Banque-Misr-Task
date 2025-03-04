@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.compose.material)
     implementation(libs.landscapist.bom)
     implementation(libs.landscapist.coil)
+    implementation(libs.compose.constraintlayout)
     // Android Studio Preview support
     debugImplementation(libs.androidx.ui.tooling)
 }

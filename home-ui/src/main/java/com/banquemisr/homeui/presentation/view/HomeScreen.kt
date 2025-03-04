@@ -56,7 +56,7 @@ internal fun ScreenContent(
         }
 
         is HomeViewModel.DisplayState.Error -> {
-            ErrorScreen()
+            HomeErrorScreen()
         }
 
         is HomeViewModel.DisplayState.ContentState -> {

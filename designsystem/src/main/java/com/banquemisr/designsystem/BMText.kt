@@ -28,6 +28,16 @@ object BMText {
     }
 
     @Composable
+    fun HeadingS(textModifier: BMTextModifier = BMTextModifier(), text: String) {
+        BasicText(
+            text = text,
+            bmTextModifier = textModifier,
+            style = BMTypography.HeadingM,
+            defaultColor = BMTheme.colors.textSecondary
+        )
+    }
+
+    @Composable
     private fun BasicText(text: String, bmTextModifier: BMTextModifier, style: TextStyle, defaultColor: Color) {
         Text(
             text = text,

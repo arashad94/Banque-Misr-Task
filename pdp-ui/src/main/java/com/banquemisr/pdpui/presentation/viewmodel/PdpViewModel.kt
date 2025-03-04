@@ -6,7 +6,7 @@ import com.banquemisr.pdpcomponent.domain.usecase.FetchMovieDetails
 import com.banquemisr.viewmodel.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 @HiltViewModel
 internal class PdpViewModel @Inject constructor(
@@ -23,6 +23,7 @@ internal class PdpViewModel @Inject constructor(
     fun fetchMovieDetails(id: String) {
         stateDelegate.updateState { State.Loading }
         viewModelScope.launch {
+            delay(1000)
             fetchMovieDetails.invoke(id).fold(
                 success = { movie ->
                     stateDelegate.updateState { State.Content(movie) }
