@@ -6,13 +6,13 @@ import androidx.compose.ui.unit.sp
 
 object BMTypography {
     val HeadingL = TextStyle(
-        fontSize = 24.sp,
-        lineHeight = 28.8.sp,
+        fontSize = 18.sp,
+        lineHeight = 18.8.sp,
         fontWeight = FontWeight(700)
     )
     val HeadingM = TextStyle(
-        fontSize = 20.sp,
-        lineHeight = 24.sp,
+        fontSize = 14.sp,
+        lineHeight = 14.sp,
         fontWeight = FontWeight(700)
     )
 }

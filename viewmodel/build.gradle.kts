@@ -1,18 +1,18 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
+    id("kotlin-parcelize")
     alias(libs.plugins.ksp)
     id("dagger.hilt.android.plugin")
 }
 
-apply(from = "../coverage/coverageReport.gradle")
-
 android {
-    namespace = "com.banquemisr.home_component"
+    namespace = "com.banquemisr.viewmodel"
     compileSdk = 34
 
     defaultConfig {
         minSdk = 24
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -31,19 +31,11 @@ android {
 }
 
 dependencies {
-    implementation(project(":retrofitfactory"))
-    implementation(project(":network-utils"))
-    implementation(project(":shared"))
-
     implementation(libs.kotlin.coroutines.core)
+
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
-    ksp(libs.moshi.codegen)
-    implementation(libs.moshi)
-    implementation(libs.moshi.adapters)
-    implementation(libs.retrofit)
-    testImplementation(libs.mockito.kotlin)
-    testImplementation(libs.junit)
-    testImplementation(libs.kotlinx.coroutines.test)
-    androidTestImplementation(libs.androidx.junit)
 }

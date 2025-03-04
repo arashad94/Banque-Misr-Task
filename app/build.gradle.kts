@@ -1,6 +1,7 @@
 import java.util.Properties
 
 plugins {
+    id ("dagger.hilt.android.plugin")
     id("com.android.application")
     id("kotlin-android")
     alias(libs.plugins.compose.compiler)
@@ -82,10 +83,13 @@ dependencies {
     implementation(project(":retrofitfactory"))
     implementation(project(":designsystem"))
     implementation(project(":shared"))
+    implementation(project(":home-component"))
+    implementation(project(":home-ui"))
 
     ksp(libs.hilt.android.compiler)
     ksp(libs.moshi.codegen)
     implementation(libs.androidx.core)
+    implementation(libs.compose.navigation)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
