@@ -1,0 +1,26 @@
+{
+  "adult": false,
+  "backdrop_path": "/9nhjGaFLKtddDPtPaX5EmKqsWdH.jpg",
+  "genres": [
+    {
+      "id": 10749,
+      "name": "Romance"
+    },
+    {
+      "id": 878,
+      "name": "Science Fiction"
+    },
+    {
+      "id": 53,
+      "name": "Thriller"
+    }
+  ],
+  "id": 950396,
+  "original_language": "en",
+  "overview": "Two highly trained operatives grow close from a distance after being sent to guard opposite sides of a mysterious gorge. When an evil below emerges, they must work together to survive what lies within.",
+  "poster_path": "/7iMBZzVZtG0oBug4TfqDb9ZxAOa.jpg",
+  "release_date": "2025-02-13",
+  "status": "Released",
+  "title": "The Gorge",
+  "vote_average": 7.785
+}

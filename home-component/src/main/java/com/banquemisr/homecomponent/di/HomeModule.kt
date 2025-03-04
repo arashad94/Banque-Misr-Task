@@ -6,7 +6,7 @@ import com.banquemisr.homecomponent.data.mapper.MoviesByTypeMapper
 import com.banquemisr.homecomponent.data.repository.DefaultMovieTypesRepository
 import com.banquemisr.homecomponent.domain.repository.MovieTypesRepository
 import com.banquemisr.homecomponent.domain.usecase.*
-import com.banquemisr.homecomponent.domain.usecase.DefaultFetchMoviesByTypeUseCase
+import com.banquemisr.homecomponent.domain.usecase.FetchMoviesByTypeUseCase
 import dagger.*
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
@@ -35,6 +35,6 @@ internal object HomeModule {
     @Singleton
     @Provides
     fun provideFetchMoviesByTypeUseCase(
-        useCase: DefaultFetchMoviesByTypeUseCase
-    ): FetchMoviesByTypeUseCase = useCase
+        useCase: FetchMoviesByTypeUseCase
+    ): FetchMoviesByType = useCase
 }

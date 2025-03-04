@@ -2,16 +2,16 @@ package com.banquemisr.homecomponent.domain
 
 import com.banquemisr.homecomponent.domain.model.MoviesType
 import com.banquemisr.homecomponent.domain.repository.MovieTypesRepository
-import com.banquemisr.homecomponent.domain.usecase.DefaultFetchMoviesByTypeUseCase
+import com.banquemisr.homecomponent.domain.usecase.FetchMoviesByTypeUseCase
 import com.banquemisr.shared.BMResult
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Test
 import org.mockito.kotlin.*
 
-class DefaultFetchMoviesByTypeUseCaseTest {
+class FetchMoviesByTypeUseCaseTest {
     private val repository: MovieTypesRepository = mock()
-    private val sut = DefaultFetchMoviesByTypeUseCase(repository)
+    private val sut = FetchMoviesByTypeUseCase(repository)
 
     @Test
     fun `EXPECT valid object WHEN repo returns valid response`() = runTest {

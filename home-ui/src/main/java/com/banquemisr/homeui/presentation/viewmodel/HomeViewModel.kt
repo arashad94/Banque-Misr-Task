@@ -2,7 +2,7 @@ package com.banquemisr.homeui.presentation.viewmodel
 
 import androidx.lifecycle.*
 import com.banquemisr.homecomponent.domain.model.Movie
-import com.banquemisr.homecomponent.domain.usecase.FetchMoviesByTypeUseCase
+import com.banquemisr.homecomponent.domain.usecase.FetchMoviesByType
 import com.banquemisr.homeui.data.*
 import com.banquemisr.homeui.presentation.viewmodel.HomeViewModel.DisplayState.*
 import com.banquemisr.viewmodel.*
@@ -11,7 +11,7 @@ import javax.inject.Inject
 import kotlinx.coroutines.*
 @HiltViewModel
 internal class HomeViewModel @Inject constructor(
-    private val fetchMoviesByTypeUseCase: FetchMoviesByTypeUseCase,
+    private val fetchMoviesByType: FetchMoviesByType,
     private val stateDelegate: StateDelegate<State> = StateDelegate()
 ) : ViewModel(), StateViewModel<HomeViewModel.State> by stateDelegate {
     init {
@@ -21,7 +21,7 @@ internal class HomeViewModel @Inject constructor(
     fun fetchMovies(index: Int = 0, type: String = "now_playing") {
         stateDelegate.updateState { State.Content(displayState = Loading) }
         viewModelScope.launch {
-            fetchMoviesByTypeUseCase.invoke(type).fold(
+            fetchMoviesByType.invoke(type).fold(
                 success = { type ->
                     val newState = State.Content(index = index, displayState = ContentState(type.results))
                     stateDelegate.forceUpdateState(newState)
