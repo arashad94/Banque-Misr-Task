@@ -23,7 +23,6 @@ internal class PdpViewModel @Inject constructor(
     fun fetchMovieDetails(id: String) {
         stateDelegate.updateState { State.Loading }
         viewModelScope.launch {
-            delay(1000)
             fetchMovieDetails.invoke(id).fold(
                 success = { movie ->
                     stateDelegate.updateState { State.Content(movie) }
