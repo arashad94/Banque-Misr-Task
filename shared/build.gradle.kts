@@ -29,6 +29,7 @@ dependencies {
     implementation(libs.androidx.core)
     implementation(libs.androidx.appcompat)
     implementation(libs.google.material)
+    implementation(libs.appmattus.fixture)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     testImplementation(libs.mockito.kotlin)

@@ -4,7 +4,7 @@ import com.banquemisr.bmflows.*
 import com.banquemisr.pdpcomponent.domain.model.MovieDetails
 import com.banquemisr.pdpcomponent.domain.usecase.FetchMovieDetails
 import com.banquemisr.pdpui.presentation.viewmodel.PdpViewModel
-import com.banquemisr.shared.BMResult
+import com.banquemisr.shared.*
 import com.banquemisr.viewmodel.StateDelegate
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.*
@@ -67,15 +67,6 @@ class PdpViewModelTest {
 
     private companion object {
         const val MOVIE_ID = "1"
-        val MOVIE_DETAILS = MovieDetails(
-            id = 1,
-            title = "Title",
-            posterPath = "Poster",
-            overview = "Overview",
-            releaseDate = "Release date",
-            voteAverage = 3.5,
-            status = "status",
-            genres = listOf("genres")
-        )
+        val MOVIE_DETAILS = fixtureOf<MovieDetails>()
     }
 }

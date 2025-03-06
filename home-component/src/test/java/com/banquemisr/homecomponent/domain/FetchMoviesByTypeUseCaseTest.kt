@@ -3,7 +3,7 @@ package com.banquemisr.homecomponent.domain
 import com.banquemisr.homecomponent.domain.model.MoviesType
 import com.banquemisr.homecomponent.domain.repository.MovieTypesRepository
 import com.banquemisr.homecomponent.domain.usecase.FetchMoviesByTypeUseCase
-import com.banquemisr.shared.BMResult
+import com.banquemisr.shared.*
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Test
@@ -34,6 +34,6 @@ class FetchMoviesByTypeUseCaseTest {
 
     private companion object {
         const val TYPE = "type"
-        val MOVIE_TYPE = MoviesType(results = emptyList())
+        val MOVIE_TYPE = fixtureOf<MoviesType>()
     }
 }

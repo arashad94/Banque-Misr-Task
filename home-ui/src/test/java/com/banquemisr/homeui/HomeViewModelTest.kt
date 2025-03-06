@@ -5,7 +5,7 @@ import com.banquemisr.homecomponent.domain.model.*
 import com.banquemisr.homecomponent.domain.usecase.FetchMoviesByType
 import com.banquemisr.homeui.data.TabInfo
 import com.banquemisr.homeui.presentation.viewmodel.HomeViewModel
-import com.banquemisr.shared.BMResult
+import com.banquemisr.shared.*
 import com.banquemisr.viewmodel.StateDelegate
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.*
@@ -158,19 +158,8 @@ class HomeViewModelTest {
     }
 
     private companion object {
-        val MOVIE = Movie(
-            adult = false,
-            id = 1,
-            title = "Movie 1",
-            posterPath = "Overview 1",
-            overview = "Over view",
-            releaseDate = "1-1-2020"
-        )
-        val MOVIES = listOf(
-            MOVIE.copy(id = 1),
-            MOVIE.copy(id = 2)
-        )
-        val MOVIES_TYPE = MoviesType(MOVIES)
+        val MOVIES = fixtureOf<List<Movie>> { listSize = 2 }
+        val MOVIES_TYPE = fixtureOf<MoviesType>().copy(results = MOVIES)
         val TABS_LIST: List<TabInfo> = listOf(
             // This should be also coming from an API but out of scope
             TabInfo("Now Playing", "now_playing"),

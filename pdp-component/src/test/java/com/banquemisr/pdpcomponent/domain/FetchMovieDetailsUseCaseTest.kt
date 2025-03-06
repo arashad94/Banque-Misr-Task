@@ -3,7 +3,7 @@ package com.banquemisr.pdpcomponent.domain
 import com.banquemisr.pdpcomponent.domain.model.MovieDetails
 import com.banquemisr.pdpcomponent.domain.repository.MovieDetailsRepository
 import com.banquemisr.pdpcomponent.domain.usecase.FetchMovieDetailsUseCase
-import com.banquemisr.shared.BMResult
+import com.banquemisr.shared.*
 import kotlinx.coroutines.test.runTest
 import org.junit.*
 import org.mockito.kotlin.*
@@ -33,15 +33,6 @@ class FetchMovieDetailsUseCaseTest {
 
     private companion object {
         const val ID = "12312"
-        val MOVIE_DETAILS = MovieDetails(
-            id = 123,
-            title = "",
-            posterPath = "",
-            overview = "",
-            releaseDate = "",
-            voteAverage = 1.2,
-            status = "",
-            genres = listOf()
-        )
+        val MOVIE_DETAILS = fixtureOf<MovieDetails>()
     }
 }
