@@ -8,7 +8,7 @@ import org.mockito.kotlin.*
 
 class BMResultTest {
     @Test
-    fun `EXPECT GSResult Success can be instantiated correctly`() {
+    fun `EXPECT BMResult Success can be instantiated correctly`() {
         val sut: BMResult<Int, String> = BMResult.Success(42)
 
         assertTrue(sut.isSuccess())
@@ -17,7 +17,7 @@ class BMResultTest {
     }
 
     @Test
-    fun `EXPECT GSResult Error can be instantiated correctly`() {
+    fun `EXPECT BMResult Error can be instantiated correctly`() {
         val sut: BMResult<Int, String> = BMResult.Error("An error occurred")
 
         assertTrue(sut.isError())

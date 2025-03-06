@@ -38,14 +38,10 @@ ext.excludedClasses = [
         // sealed and data classes
         '*.*$Result',
         '*.*$Result$*',
-        // GraphQL
-        '*.graphql.*',
         // API
         '*.data.api.*',
         // DI
         '*.di.*',
-        // Hmac
-        '*.gymshark.security.*',
         // Moshi,
         '*.*JsonAdapter',
         // Root/Jailbreak
@@ -64,15 +60,13 @@ ext.excludedClasses = [
         '*.presentation.navigation.*',
         '*.NavigationController*',
         '*.designsystem.*',
-        // deprecated classes that will be replaced (not worth testing)
-        '*.DefaultCachedObject*',
         // data classes, temporary - https://github.com/Kotlin/kotlinx-kover/issues/686
         '*.domain.model.*',
         '*.data.model.*',
 ]
 ext.excludedPackages = [
         // app
-        'com.gymshark.store.app',
+        'com.banquemisr.challenge05',
         // Glide
         'com.bumptech.glide',
 ]
