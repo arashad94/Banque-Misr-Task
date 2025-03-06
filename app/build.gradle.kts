@@ -105,7 +105,10 @@ dependencies {
     implementation(libs.moshi.kotlin)
     implementation(libs.moshi.adapters)
     implementation(libs.retrofit)
+    implementation(libs.konsist)
     implementation(libs.retrofit.logging.interceptor)
     implementation(libs.retrofit.converter.moshi)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.junit)
     "stagingImplementation"(libs.chucker)
 }

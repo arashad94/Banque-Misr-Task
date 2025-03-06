@@ -24,5 +24,7 @@ dependencies {
     kover(project(':retrofitfactory'))
     kover(project(':home-component'))
     kover(project(':home-ui'))
+    kover(project(':pdp-ui'))
+    kover(project(':pdp-component'))
     kover(project(':bmcache'))
 }

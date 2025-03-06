@@ -27,6 +27,7 @@ kotlinx = "1.10.1"
 netmock = "0.5.0"
 landscapist = "2.4.1"
 compose_constraint_layout = "1.1.1"
+konsist = "0.17.3"
 
 [libraries]
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
@@ -56,6 +57,7 @@ kotlin-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coro
 netmock = { module = "io.github.denisbronx.netmock:netmock-server", version.ref = "netmock" }
 landscapist-bom = { group = "com.github.skydoves", name = "landscapist-bom", version.ref = "landscapist" }
 landscapist-coil = { group = "com.github.skydoves", name = "landscapist-coil" }
+konsist = { module = "com.lemonappdev:konsist", version.ref = "konsist" }
 
 # chucker
 chucker = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }

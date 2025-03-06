@@ -1,6 +1,6 @@
 # Movie Explorer
 
-![Kover Coverage](https://img.shields.io/badge/Kover_Coverage-98.85%25-brightgreen?logo=kotlin)
+![Kover Coverage](https://img.shields.io/badge/Kover_Coverage-99.19%25-brightgreen?logo=kotlin)
 
 (Not considering UI testing)
 
@@ -57,6 +57,7 @@ The app follows the **MVVM** architecture pattern, ensuring a clear separation o
 - **Kover**: For test coverage.
 - **Chucker**: For observing api calls.
 - **netmock**: For testing API.
+- **Konsis**: For architectural testing.
 
 ---
 
