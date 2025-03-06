@@ -1,6 +1,5 @@
 package com.banquemisr.homeui.presentation.view
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.runtime.Composable
@@ -10,6 +9,7 @@ import androidx.compose.ui.unit.dp
 import com.banquemisr.designsystem.*
 import com.banquemisr.designsystem.BMText.HeadingL
 import com.banquemisr.designsystem.BMText.HeadingM
+import com.banquemisr.designsystem.behaviour.clickableGuarded
 import com.banquemisr.homecomponent.domain.model.Movie
 
 @Composable
@@ -25,7 +25,7 @@ fun MovieItem(movie: Movie, onMovieClicked: (String) -> Unit) {
         modifier = Modifier
             .width(180.dp)
             .padding(BMSpacing.nano)
-            .clickable { onMovieClicked(movie.id.toString()) }
+            .clickableGuarded { onMovieClicked(movie.id.toString()) }
     ) {
         BMImage(
             modifier = Modifier

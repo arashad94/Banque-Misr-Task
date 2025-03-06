@@ -11,6 +11,7 @@ import androidx.compose.ui.text.style.*
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.*
 import com.banquemisr.designsystem.BMText.HeadingL
+import com.banquemisr.designsystem.behaviour.clickableGuarded
 
 private val ICON_SIZE = BMSpacing.xsm
 private val ICON_PADDING = BMSpacing.xxsm
@@ -36,7 +37,7 @@ fun HeaderBar(
             modifier = Modifier
                 .padding(BMSpacing.xxsm)
                 .size(BMSpacing.xsm)
-                .clickable { onBackClicked() }
+                .clickableGuarded { onBackClicked() }
         )
         HeadingL(
             text = title.uppercase(),
