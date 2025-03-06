@@ -22,11 +22,6 @@ class StateDelegate<State> @Inject constructor() : StateViewModel<State> {
         _state.update { block(it) }
     }
 
-    suspend fun forceUpdateState(state: State) {
-        _state.value = state
-        _state.emit(state)
-    }
-
     inline fun <reified SubState : State> onState(block: (SubState) -> Unit) {
         val currentState = state.value
         if (currentState is SubState) { block(currentState) }

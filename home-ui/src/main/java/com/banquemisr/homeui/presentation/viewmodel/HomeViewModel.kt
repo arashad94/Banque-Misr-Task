@@ -33,7 +33,7 @@ internal class HomeViewModel @Inject constructor(
             fetchMoviesByType.invoke(type).fold(
                 success = { type ->
                     val newState = State.Content(index = index, displayState = ContentState(type.results))
-                    stateDelegate.forceUpdateState(newState)
+                    stateDelegate.updateState{ newState }
                 },
                 error = {
                     stateDelegate.updateState { State.Content(displayState = Error) }
